@@ -51,7 +51,7 @@ class Visite
      * @ORM\Column(type="integer", nullable=true)
      */
     private $tempmax;
-
+    
     public function getId(): ?int
     {
         return $this->id;
@@ -91,6 +91,11 @@ class Visite
         $this->datecreation = $datecreation;
 
         return $this;
+    }
+    
+    public function getDatecreationString() : string
+    {
+        return $this->datecreation->format('d/m/Y');
     }
 
     public function getNote(): ?int
