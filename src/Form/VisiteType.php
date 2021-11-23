@@ -51,4 +51,5 @@ class VisiteType extends AbstractType
             'data_class' => Visite::class,
         ]);
     }
+    
 }
