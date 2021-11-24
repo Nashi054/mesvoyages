@@ -56,4 +56,18 @@ class VisiteRepository extends ServiceEntityRepository
                     ->getResult();
         }
     }
+    
+    /**
+     * Retourne les deux visites les plus récentes
+     * @return Visite[]
+     */
+    public function findLastTwo(): array
+    {
+        return $this->createQueryBuilder('v')
+                ->setMaxResults(2)
+                ->orderBy('v.datecreation', 'DESC')
+                ->getQuery()
+                ->getResult();
+    }
+    
 }
