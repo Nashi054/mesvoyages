@@ -29,6 +29,8 @@ class AdminVoyagesController extends AbstractController {
      */
     private $om;
     
+    private $ADMIN_VOYAGES_PATH = 'admin.voyages';
+    
     /**
      * 
      * @param VisiteRepository $repository
@@ -58,7 +60,7 @@ class AdminVoyagesController extends AbstractController {
     public function suppr(Visite $visite): Response{
         $this->om->remove($visite);
         $this->om->flush();
-        return $this->redirectToRoute('admin.voyages');
+        return $this->redirectToRoute($this->ADMIN_VOYAGES_PATH);
     }
     
     /**
@@ -73,7 +75,7 @@ class AdminVoyagesController extends AbstractController {
         $formVisite->handleRequest($request);
         if($formVisite->isSubmitted() && $formVisite->isValid()){
             $this->om->flush();
-            return $this->redirectToRoute('admin.voyages');
+            return $this->redirectToRoute($this->ADMIN_VOYAGES_PATH);
         }
         
         return $this->render("admin/admin.voyage.edit.html.twig", [
@@ -95,7 +97,7 @@ class AdminVoyagesController extends AbstractController {
         if($formVisite->isSubmitted() && $formVisite->isValid()){
             $this->om->persist($visite);
             $this->om->flush();
-            return $this->redirectToRoute('admin.voyages');
+            return $this->redirectToRoute($this->ADMIN_VOYAGES_PATH);
         }
         
         return $this->render("admin/admin.voyage.ajout.html.twig", [

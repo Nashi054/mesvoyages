@@ -21,7 +21,7 @@
             <!-- emplacement photo -->
             {% if visite.imagename %}
                 <img src="{{ app.request.getBasePath()~vich_uploader_asset(visite, 'imageFile') }}"
-                     class="card-img-top" style="with:100%;height:auto;">
+                     class="card-img-top" style="width:100%;height:auto;" alt="Photo de la ville de {{ visite.ville }}">
             {% endif %}
         </div>
     </div>
